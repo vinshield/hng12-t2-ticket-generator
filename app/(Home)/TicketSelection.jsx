@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Divider } from "@/components/ui/divider";
 import { useState, useEffect } from "react";
 
-export default function TicketSelection() {
+export default function TicketSelection({ onSubmit }) {
 	const [selected, setSelected] = useState("free");
 
 	const [formData, setFormData] = useState({
@@ -31,12 +31,13 @@ export default function TicketSelection() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		localStorage.setItem("formData", JSON.stringify(formData));
-		alert("Form data saved!");
-		console.log(localStorage.getItem("formData"));
+		// alert("Form data saved!");
+		// console.log(localStorage.getItem("formData"));
+		onSubmit();
 	};
 
 	return (
-		<div className='flex flex-col mx-auto relative bg-[#08252B] rounded-[32px] p-8 w-[90%] gap-7'>
+		<>
 			<div className='grid gap-2'>
 				<h1 className='text-white'>Ticket Selection</h1>
 				<p className=''> Step 1/3</p>
@@ -92,7 +93,7 @@ export default function TicketSelection() {
 							type='number'
 							name='numOfTickets'
 							id='quantity'
-							value={formData.numOfTickets}
+							value={formData.numOfTickets || 1}
 							className='w-full bg-[#0E464F] border border-[#00A3A1] text-white p-2 rounded-lg'
 							onChange={handleChange}
 						/>
@@ -105,6 +106,6 @@ export default function TicketSelection() {
 					</div>
 				</div>
 			</form>
-		</div>
+		</>
 	);
 }
