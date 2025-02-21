@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import TicketSelection from "./TicketSelection";
 import AttendeeDetails from "./AttendeeDetails";
@@ -9,24 +9,8 @@ import TicketDetails from "./TicketDetails";
 
 const Home = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
 
-  const [step, setStep] = useState(searchParams.get("step") || "first");
-  const [username, setUsername] = useState(searchParams.get("username") || "");
-
-  useEffect(() => {
-    const urlStep = searchParams.get("step");
-    const urlUsername = searchParams.get("username");
-
-    if (urlStep) {
-      setStep(urlStep);
-    }
-    if (urlUsername) {
-      setUsername(urlUsername);
-      // Clear the stored username from localStorage
-      localStorage.removeItem("pendingUsername");
-    }
-  }, [searchParams]);
+  const [step, setStep] = useState("first");
 
   const handleTicketSelectionSubmit = () => {
     setStep("second");
