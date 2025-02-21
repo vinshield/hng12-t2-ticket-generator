@@ -5,7 +5,7 @@ import Barcode from "@/public/barcode.svg";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
-const TicketDetails = () => {
+const TicketDetails = ({ newTicket }) => {
   const [ticketInfo, setTicketInfo] = useState();
   useEffect(() => {
     let ticketData = JSON.parse(localStorage.getItem("ticketData"));
@@ -87,7 +87,15 @@ const TicketDetails = () => {
 
       <div className="flex w-full flex-col gap-3 md:flex-row-reverse">
         <Button className="w-full">Download Ticket</Button>
-        <Button className="w-full" type="button" variant="outline">
+        <Button
+          onClick={() => {
+            localStorage.clear();
+            newTicket();
+          }}
+          className="w-full"
+          type="button"
+          variant="outline"
+        >
           Book Another Ticket
         </Button>
       </div>

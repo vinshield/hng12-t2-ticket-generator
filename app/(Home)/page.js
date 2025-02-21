@@ -35,7 +35,7 @@ const Home = () => {
           goBack={changeTicketType}
         />
       )}
-      {step === "done" && <TicketDetails />}
+      {step === "done" && <TicketDetails newTicket={changeTicketType} />}
     </div>
   );
 };
