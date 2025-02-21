@@ -32,12 +32,12 @@ const TicketDetails = () => {
         You can download or check your email for a copy
       </p>
 
-      <div className="relative m-auto md:w-[50%]">
+      <div className="relative m-auto w-full md:w-[50%]">
         <TicketFrame className="relative z-0" />
 
         <div className="absolute inset-0 m-5">
           <div className="flex flex-col items-center justify-center gap-5 rounded-[16px] border border-[#24A0B5] p-3">
-            <h2 className="title text-[34px] leading-none">
+            <h2 className="title text-center text-[34px] leading-none">
               Techember Fest &apos;25
             </h2>
             <div className="text-center text-xs">

@@ -48,6 +48,10 @@ const AttendeeDetails = ({ infoCollected, goBack }) => {
     },
   });
 
+  const {
+    formState: { isSubmitting },
+  } = form;
+
   useEffect(() => {
     let savedFormData = localStorage.getItem("formData");
     if (savedFormData) {
@@ -160,8 +164,8 @@ const AttendeeDetails = ({ infoCollected, goBack }) => {
           />
 
           <div className="flex w-full flex-col gap-3 md:flex-row-reverse">
-            <Button className="w-full" type="submit">
-              Get My Free Ticket
+            <Button disabled={isSubmitting} className="w-full" type="submit">
+              {isSubmitting ? "Generating Ticket..." : "Get My Free Ticket"}
             </Button>
             <Button
               onClick={goBack}
